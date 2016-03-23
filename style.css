@@ -1,0 +1,27 @@
+/* 
+Theme Name: Hotel Terral - Web
+Theme URL: 
+Version: 2.0
+Author: El Buen Camino
+Author URL: http://www.elbuencamino.com
+Description: Child theme for Santorini
+License: Licencia Creative Commons
+License URL: http://creativecommons.org/licenses/by/3.0/
+Template: wp_santorini5-v1.6
+*/
+
+@charset "utf-8";
+
+/* CSS Document */
+@import url('../wp_santorini5-v1.6/style.css');
+@import url('css/terral.css');
+
+/******CLEARFIX******/
+.clearfix {*zoom:1; display:block;}
+.clearfix:before, .clearfix:after {display:table; content:""; line-height:0; visibility:hidden; height:0;}
+.clearfix:after {clear:both;}
+html[xmlns] .clearfix {display:block;}
+* html .clearfix {height:1%;}
+.clear {clear:both;}
+
+/*END*/
