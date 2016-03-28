@@ -14,6 +14,7 @@
 @grid-grey: #d2d2d4;
 @text-grey: #444;
 @tab-grey: #d9d9d9;
+@tour-grey: #5c5c5c;
 @family: 'Lato', sans-serif;
 @font: 'PT Sans Narrow', sans-serif;
 .rounded-corners (@radius:10px) {
@@ -25,7 +26,7 @@
 }
 
 /*GENERAL*/
-body {margin:0; padding:0; font-family:@family !important; background:0@white; background-size:100% auto;}
+body {margin:0; padding:0; font-family:@family !important; background:@white; background-size:100% auto;}
 h1,h2,h3,h4,h5,h6, p {font-family:@family !important;}
 p {font-size:15px;}
 h1 {}
@@ -127,13 +128,15 @@ a {-webkit-transition:background .2s ease-in-out,color .2s ease-in-out; -moz-tra
 .home #reserva {padding-top:30px;}
 .home #reserva p {margin-right:15px; margin-left:15px;}
 #reserva {padding:0; text-align:center; background:@back-grey;}
-#reserva {
+#reserva p {margin-bottom:20px !important; font-size:16px !important; font-weight:700 !important; letter-spacing:3px !important; color:@text-grey;}
+.booking-wrap {position:relative; margin:0; padding:0 0 20px; height:auto; background:none;}
+.booking-wrap {
 	h3 {display:none !important;}
-	p {margin-bottom:20px !important; font-size:16px !important; font-weight:700 !important; letter-spacing:3px !important; color:@text-grey;}
+	p {width:25%; display:inline-block; margin-bottom:20px !important; font-size:16px !important; font-weight:700 !important; letter-spacing:3px !important; color:@text-grey;}
 	form p {margin-top:0 !important; margin-left:0 !important; padding-left:0 !important;}
-	input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea, select, input[type="submit"] {background:transparent; padding:8px 15px; color:@text-grey; font-size:14px; font-weight:700; font-family:@family;}
-	input[type="submit"] {padding:10px 15px; background:@brown; color:@white; text-transform:uppercase; float:right; border:none;}
-	input[type="submit"]:hover {background:@light-brown;}
+	input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea, select, input[type="submit"] {width:100%; background:transparent; padding:8px 15px; color:@text-grey; font-size:14px; font-weight:700; font-family:@family;}
+	input[type="submit"], button {padding:10px 15px; background:@brown; color:@white !important; text-transform:uppercase; float:right; border:none;}
+	input[type="submit"]:hover, button:hover {background:@back-brown !important; border:none;}
 	::-webkit-input-placeholder {color:@text-grey;}
 	:-moz-placeholder {color:@text-grey;}
 	::-moz-placeholder {color:@text-grey}
@@ -141,7 +144,6 @@ a {-webkit-transition:background .2s ease-in-out,color .2s ease-in-out; -moz-tra
 	.hb-search-fields {margin-bottom:20px;}
 	.hb-search-submit-section {position:absolute; right:0; top:0;}
 }
-.booking-wrap {position:relative; margin:0; padding:0 0 20px; height:auto; background:none;}
 .hb-booking-search-form {
 	h3 {display:none;}
 	p.hb-check-dates-wrapper, p.hb-people-wrapper {display:inline-block; width:auto !important;}
@@ -310,28 +312,59 @@ blockquote {position:relative;}
 
 /*FICHA*/
 .cont-servicios {margin:0px 0 80px;}
+.single-tours #bx-pager {display:none;}
 .tour-title {padding:30px 0; background:@back-grey; text-align:center;}
 .tour-title h4 {margin:0; font-size:32px; font-weight:700; color:@brown; text-transform:uppercase; letter-spacing:4px;}
-.cont-data {padding:12px 0; background:@grid-grey; z-index:40; color:@text-grey;}
-.cont-data .white-col ul {margin:0 55px; padding:0;}
+.cont-data {padding:0; background:@grid-grey; z-index:40; color:@text-grey;}
+.cont-data .white-col, .cont-data .brown-col {padding:12px 0;}
+.cont-data .white-col ul {margin:0 30px 0 70px; padding:0;}
 .cont-data .white-col ul li {display:table-cell; width:33%; margin:0; font-size:18px; float:left; line-height:125%;}
-.cont-data .brown-col ul {margin:0 55px; padding:0;}
-.cont-data .brown-col ul li {display:table-cell; width:50%; margin:0; font-size:18px; float:left; line-height:125%;}
+.cont-data .brown-col {background:#c4c4c4;}
+.cont-data .brown-col ul {margin:0 55px 0 45px; padding:0;}
+.cont-data .brown-col ul li {display:table-cell; width:50%; margin:0; font-size:18px; font-weight:700; float:left; color:#5c5c5c; line-height:125%;}
 .cont-data li span {display:block; font-weight:700; clear:both;}
-.cont-data .button {margin-top:5px; text-transform:uppercase;}
+.cont-data .button {margin-top:5px; text-transform:uppercase; color:@white; letter-spacing:2px;}
+.cont-data .button:hover {color:@white;}
 .cont-cell {height:auto; padding:0; z-index:30;}
+.cont-cell .white-col {background:@white;}
 .cont-cell .brown-col {min-height:450px; padding:0; background:#d7ccc2;}
 .cont-cell .top-col {padding:50px 60px; height:auto;}
 .cont-cell .top-col p {font-size:20px; color:@brown; font-weight:700;}
 .cont-cell .top-col ul {margin:30px 15px; padding:0; font-size:18px;}
-.cont-cell .top-col ul li {margin:0 0 10px; color:#505050;}
+.cont-cell .top-col ul li {margin:0 0 5px; color:#505050;}
 .cont-cell .foot-col .price {display:block; margin:20px 70px; font-size:22px; font-weight:300; text-transform:uppercase; letter-spacing:2px;}
 .cont-cell .foot-col .price span {font-weight:700;}
 .cont-cell .foot-col .reserva {display:block; margin:0 auto; width:100%; float:none;}
 .cont-description {padding:50px 0; letter-spacing:1px;}
 .cont-description h5 {margin:0 55px 15px; font-size:20px; font-weight:700; color:@text-grey;}
 .cont-description p {margin:0 55px 30px; font-size:18px; line-height:170%; color:@text-grey;}
-.single-tours #bx-pager {display:none;}
+.cont-testimonios {padding:40px 0 30px; background:@back-grey;}
+.cont-testimonios {
+	.test-col {margin:0 70px;}
+	.test-col {
+		p {font-size:14px; color:@tour-grey; letter-spacing:1px;}
+		em {font-size:17px; letter-spacing:1px; color:@tour-grey; font-style:normal; letter-spacing:2px;}
+		a {color:@tour-grey; text-decoration:underline;}
+		a:hover {color:@light-brown;}
+	}
+}
+
+/*MINI-FORM*/
+#main-contacto {padding:0; max-width:550px; text-align:center;}
+#main-contacto {
+	form {margin-top:-5px;}
+	form {
+		.bloque {margin:0 0 15px;}
+		input[type='text'], input[type='email'], input[type='date'] {width:100%; padding:8px 15px; font-size:15px; border:1px solid @brown; color:@text-grey;}
+		::-webkit-input-placeholder {color:@back-brown; font-style:italic; letter-spacing:1px;}
+		:-moz-placeholder {color:@back-brown; font-style:italic; letter-spacing:1px;}
+		::-moz-placeholder {color:@back-brown; font-style:italic; letter-spacing:1px;}
+		:-ms-input-placeholder {color:@back-brown; font-style:italic; letter-spacing:1px;}
+		p {margin:10px 30px; font-size:16px; font-weight:300;}
+		input[type='submit'] {width:100%; padding:15px 0; background:@brown; color:@white; font-size:25px; letter-spacing:2px; text-align:center; font-weight:400; border:2px solid @brown;}
+		input[type='submit']:hover {background:@back-brown; border:2px solid @back-brown;}
+	}
+}
 
 /*ROOMS*/
 .cont-habs {padding:45px 0 70px;}

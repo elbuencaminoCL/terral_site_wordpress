@@ -62,33 +62,34 @@
                                             </div>
                                         <?php endif; ?>
                                     </div>
-                                    <?php
-                                        $connected = new WP_Query( array(
-                                            'connected_type' => 'testimonial_to_tours',
-                                            'connected_items' => get_queried_object_id(),
-                                            'nopaging' => true,
-                                        ) );
-                                        if ( $connected->have_posts() ) :
-                                    ?>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="cont-testimonios clearfix shadow">
+                                <?php
+                                    $connected = new WP_Query( array(
+                                        'connected_type' => 'testimonial_to_tours',
+                                        'connected_items' => get_queried_object_id(),
+                                        'nopaging' => true,
+                                    ) );
+                                    if ( $connected->have_posts() ) :
+                                ?>
                                     <?php $i=0; while ( $connected->have_posts() ) : $connected->the_post(); ?>
-                                        <div class="foot-col">
-                                            <div class="price">
-                                                <? 
-                                                    if(get_post_meta($post->ID, '_precio_pesos', true)){
-                                                        echo '<div class="cont-main-price">';
-                                                            echo '<span>Precio:</span> CLP '.get_post_meta($post->ID, '_precio_pesos', true).' / USD '.get_post_meta($post->ID, '_precio_dolares', true);
-                                                        echo '</div>';
-                                                    }
-                                                ?>
-                                            </div>
+                                        <div class="test-col">
+                                            <? the_content();?>
                                         </div>
                                     <?php $i++; endwhile; ?>
                                     <?php wp_reset_postdata();
                                         endif;
                                     ?>
-                                </div>
-                            </diV>
+                            </div>
                         </div>
+                    </div>
+
+                    <div class="cont-buttons">
+                        <div class=""><a href="#" class="button">Anterior</a></div>
+                        <div class=""><a href="#" class="button">Ver todos</a></div>
+                        <div class=""><a href="#" class="button">Siguiente</a></div>
                     </div>
                 </div>
             </div>

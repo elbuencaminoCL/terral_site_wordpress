@@ -26,7 +26,8 @@
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 						<p>Para reservar una habitación completa este formulario y te informaremos de nuestra disponibilidad lo antes posible. También podrás llamar al +5651 2412217</p>
 						<div class="booking-wrap">
-							<? echo do_shortcode( '[booking_form_fields]' );?>
+							<? echo do_shortcode( '[wdm_booking_search_widget buttonlabel="Buscar"]' );?>
+							<? echo do_shortcode( '[wdm_booking_search]' );?>
 							<? dynamic_sidebar( 'sidebar-general' );?>
 						</div>
 					</div>

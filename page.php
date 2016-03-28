@@ -3,15 +3,17 @@
 		<?php if(is_page('contacto')) { ?>
 			<div id="main-contacto" class="clearfix">
 				<div class="block clearfix">
-					<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-						<div class="cont-form">
-							<? the_content();?>
-						</div>
-					<?php endwhile; else: ?>
-						<div class="col-xs-12">
-							<p class="textos">Lo sentimos, el contenido que buscas no se encuentra disponible.</p>
-						</div>
-					<?php endif; ?>
+					<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 no-float">
+						<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+							<div class="cont-form">
+								<? the_content();?>
+							</div>
+						<?php endwhile; else: ?>
+							<div class="col-xs-12">
+								<p class="textos">Lo sentimos, el contenido que buscas no se encuentra disponible.</p>
+							</div>
+						<?php endif; ?>
+					</div>
 				</div>
 			</div>
 		<? } else { ?>

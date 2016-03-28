@@ -115,8 +115,8 @@ function content($limit) {
 //=================================================================== CUSTOM ADMIN LOGO// 
 function custom_login_logo() {
     echo '<style type="text/css">
-        body.login {background-image:url('.get_bloginfo('template_directory').'/imag/main/main_nocturnos.png) !important; background-size:100% auto !important;}
-        h1 a { background-image:url('.get_bloginfo('template_directory').'/imag/logo/logo_terral_admin.png) !important; background-size:320px 67px !important; width:320px !important; height:67px !important;}
+        body.login {background-image:url('.get_bloginfo('stylesheet_directory').'/imag/back/home01.png) !important; background-size:100% auto !important; background-position:center center;}
+        h1 a { background-image:url('.get_bloginfo('stylesheet_directory').'/imag/logo/logo_terral_admin.png) !important; background-size:320px 67px !important; width:320px !important; height:67px !important;}
         .login #backtoblog a, .login #nav a {color:#ffffff;}
     </style>';
 }
@@ -126,7 +126,7 @@ add_action('login_head', 'custom_login_logo');
 //=================================================================== REMOVE ADMIN MENUS// 
 function remove_menus () {
 global $menu;
-    $restricted = array(__('Links'),__('Comments'));
+    $restricted = array(__('Links'),__('Comments'),__('Videos'),__('Galleries'),__('Services'),__('Attractions'));
     end ($menu);
     while (prev($menu)){
         $value = explode(' ',$menu[key($menu)][0]);

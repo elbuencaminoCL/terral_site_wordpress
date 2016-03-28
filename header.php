@@ -3,9 +3,9 @@
 <!--[if gt IE 8]><!--> <html class="no-js" <?php language_attributes(); ?>> <!--<![endif]-->
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href='https://fonts.googleapis.com/css?family=Lato:400,700,300' rel='stylesheet' type='text/css'>
 	<?php if(!is_page('contacto')) { ?>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link href='https://fonts.googleapis.com/css?family=Lato:400,700,300' rel='stylesheet' type='text/css'>
 		<link href="<?php bloginfo('stylesheet_directory'); ?>/css/bootstrap.css" rel="stylesheet" media="screen">
 		<link href="<?php bloginfo('stylesheet_directory'); ?>/style.css" rel="stylesheet" media="screen">
 		<link href="<?php bloginfo('stylesheet_directory'); ?>/css/jquery.bxslider.css" rel="stylesheet" media="screen">
@@ -54,7 +54,7 @@
 			<script src="<?php bloginfo('stylesheet_directory'); ?>/js/jquery.colorbox.js" type="text/javascript"></script>
 			<script>
 				$(document).ready(function(){
-					$(".ajax").colorbox();
+					$(".ajax").colorbox({iframe:true, width:"40%", height:"85%"});
 				});
 			</script>
 		<? } ?>
@@ -64,11 +64,13 @@
 
 <body <?php body_class(); ?>>
 <?php do_action('after_open_body_tag'); ?>
-
-	<div id="mobile-bar">
-		<a class="menu-trigger" href="#mobilemenu"><i class="fa fa-bars"></i></a>
-		<h1 class="mob-title"><?php bloginfo('name'); ?></h1>
-	</div>
+	
+	<? if(!is_page('contacto')) { ?>
+		<div id="mobile-bar">
+			<a class="menu-trigger" href="#mobilemenu"><i class="fa fa-bars"></i></a>
+			<h1 class="mob-title"><?php bloginfo('name'); ?></h1>
+		</div>
+	<? } ?>
 
 	<div class="wrapper">
 		<div id="page">
