@@ -24,8 +24,10 @@
 					<?php endif; ?>
 				</div>
 				<div class="container">
-					<div class="cont-col cont-grid col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<div class="cont-title"><h3 class="clearfix">¿Qué hacer en el Valle del Elqui?</h3></div>
+					<div class="cont-col col-tours cont-grid col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<?php if(get_field('_agregar_titulo_bloque') ): ?>
+							<div class="cont-title"><h3 class="clearfix"><?php the_field('_agregar_titulo_bloque'); ?></h3></div>
+                        <?php endif; ?>
 						<div class="cont-filter clearfix">
 							<?php
 	                            $args = array(
@@ -53,12 +55,12 @@
 									        echo '" data-myorder="'.$i.'">';
 	                                        	echo '<div class="box-shadow relative">';
 	                                        		echo '<div class="relative">';
-	                                        			echo '<a href="'.get_the_permalink($post->ID).'">'.get_the_post_thumbnail($post->ID, 'int-valle', array('class' => 'img-responsive')).'</a>';
+	                                        			echo '<a href="'.get_the_permalink($post->ID).'">'.get_the_post_thumbnail($post->ID, 'int-tours', array('class' => 'img-responsive')).'</a>';
 	                                        		echo '</div>';
 	                                        		echo '<div class="bottom">';
 	                                        			echo '<h4><a href="'.get_the_permalink($post->ID).'">'.get_the_title($post->ID).'</a></h4>';
 	                                        			echo '<div class="absolute-box">';
-			                                        		echo '<p>'.$excerpt.'</p>';
+			                                        		echo '<p>'.excerpt(22).'...</p>';
 			                                        		echo '<div class="cont-buttons clearfix">';
 	                                                            echo '<a href="'.get_the_permalink($inf).'" class="button info">Más Info</a>';
 	                                                        echo '</div>';
@@ -82,18 +84,7 @@
 					<img src="<?php bloginfo('stylesheet_directory'); ?>/imag/main/main_booking.png" class="back-foot img-responsive" />
 					<h4>Quédate con nosotros</h4>
 				</div>
-				<div id="reserva" class="clearfix shadow">
-					<div class="container">
-						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-							<p>Para reservar una habitación completa este formulario y te informaremos de nuestra disponibilidad lo antes posible. También podrás llamar al +5651 2412217</p>
-							<div class="booking-wrap">
-								<div class="container">
-									<? echo do_shortcode( '[hb_booking_form]' );?>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+				<? include_once('reserva.php');?>
 			</div>
 		</div>
 		<!--/main-->

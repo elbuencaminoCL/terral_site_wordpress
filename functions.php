@@ -15,7 +15,14 @@ if( function_exists('acf_add_options_page') ) {
     acf_add_options_page(array(
         'page_title' => 'Seleccionar Temporada',
         'menu_title' => 'Temporada vigente',
-        'menu_slug' => 'seleccion ar-temporada',
+        'menu_slug' => 'seleccionar-temporada',
+        'capability' => 'edit_posts',
+        'redirect' => false
+    ));
+    acf_add_options_page(array(
+        'page_title' => 'Opciones Footer',
+        'menu_title' => 'Opciones Footer',
+        'menu_slug' => 'opciones-footer',
         'capability' => 'edit_posts',
         'redirect' => false
     ));
@@ -32,6 +39,7 @@ function wpse_setup_theme() {
         add_image_size( 'home', 270, 230, true);
         add_image_size( 'int', 344, 214, true);
         add_image_size( 'int-valle', 350, 170, array('center', 'center'));
+        add_image_size( 'int-tours', 300, 170, array('center', 'center'));
         add_image_size( 'rest', 705, 250, array('center', 'center'));
         add_image_size( 'hab', 370, 250, array('center', 'center'));
         add_image_size( 'hab-detalle', 360, 220, array('center', 'center'));
@@ -250,12 +258,13 @@ global $wpdb;
                                         if($i==1) {echo '<div class="col col-lg-4 col-md-4 col-sm-4 col-xs-4">';}
                                         if($i==2) {echo '<div class="col col-lg-4 col-md-4 col-sm-4 col-xs-4">';}
                                             echo '<div class="box-shadow relative">';
+                                            echo '<a href="'.get_the_permalink($inf).'">';
                                                 echo '<div class="relative">';
                                                     $titulo = get_post_meta($inf, '_ingresar_titulo_alt', true);
                                                     $excerpt= apply_filters('the_excerpt', get_post_field('post_excerpt', $inf));
                                                     if($i==0) {echo '<a href="'.get_the_permalink($inf).'">'.get_the_post_thumbnail($inf, 'home', array('class' => 'img-responsive')).'</a>';}
                                                     if($i==1) {echo '<a href="'.get_the_permalink($inf).'">'.get_the_post_thumbnail($inf, 'int', array('class' => 'img-responsive')).'</a>';}
-                                                    if($i==2) {echo '<a href="'.get_the_permalink($inf).'">'.get_the_post_thumbnail($inf, 'int-valle', array('class' => 'img-responsive').'</a>');}
+                                                    if($i==2) {echo '<a href="'.get_the_permalink($inf).'">'.get_the_post_thumbnail($inf, 'int-valle', array('class' => 'img-responsive')).'</a>';}
                                                 echo '</div>';
                                                 echo '<div class="bottom">';
                                                     echo '<h4><a href="'.get_the_permalink($inf).'">'.$titulo.'</a></h4>';
@@ -269,6 +278,7 @@ global $wpdb;
                                                     echo '</div>'; 
                                                     echo '<div class="white-shadow"></div>';
                                                 echo '</div>';
+                                            echo '</a>';
                                             echo '</div>';
                                         echo '</div>';
                                     }
@@ -397,7 +407,11 @@ function get_gallery_images(){
         echo '<ul class="bxslider">';
         foreach ($gallery_pict as $gal) {
             echo '<li>';
+                $description = $gal->post_content;
                 echo wp_get_attachment_image($gal->ID, 'gal-image',array('class' => 'img-responsive'));
+                if ($description):
+                    echo '<div class="cont-picture-desc">'.$description.'</div>';
+                endif;
             echo '</li>';
         } $i++;
         echo '</ul>';
@@ -432,6 +446,17 @@ function get_custom_terms($taxonomies, $args){
         echo '<div class="filter" data-filter=".'.$term->slug.'">'.$term->name.'</div>';
     }
 }
+
+//=================================================================== ADMIN PANEL //
+function wp_hide_update() {
+    global $current_user;
+    get_currentuserinfo();
+
+    if ($current_user->ID != 1) { // only admin will see it
+        remove_action( 'admin_notices', 'update_nag', 3 );
+    }
+}
+add_action('admin_menu','wp_hide_update');
 
 //=================================================================== CONNECTIONS//
 function my_connection_types() {

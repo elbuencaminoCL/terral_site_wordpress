@@ -19,7 +19,7 @@
 							<p class="textos">Lo sentimos, el contenido que buscas no se encuentra disponible.</p>
 						</div>
 					<?php endif; ?>
-					<div class="cont-col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div id="main-spa" class="cont-col col-lg-12 col-md-12 col-sm-12 col-xs-12">
 						<?php if( get_field('_subtitulo') ): ?>
 			    			<h3 class="clearfix subtitle"><?php the_field('_subtitulo'); ?></h3>
 			    		<?php endif; ?>
@@ -39,15 +39,19 @@
 												<?php if(has_post_thumbnail()) :?>
 	                                                <?php the_post_thumbnail('int-valle', array('class' => 'img-responsive'));?>
 	                                            <?php endif; ?>
-												<h4><a href="<? the_permalink();?>"><? the_title();?></a></h4>
 											</div>
-											<?
-                                                global $post;
-                                                if (has_excerpt( $post->ID )) {
-                                                    echo '<p>'.excerpt(35).' ...</p>';
-                                                }
-                                            ?>
-											<div class="white-shadow"></div>
+											<div class="bottom">
+												<h4><? the_title();?></h4>
+												<div class="absolute-box">
+													<?
+		                                                global $post;
+		                                                if (has_excerpt( $post->ID )) {
+		                                                    echo '<p>'.excerpt(40).'</p>';
+		                                                }
+		                                            ?>
+		                                        </div>
+												<div class="white-shadow"></div>
+											</div>
 										</div>
 									</div>	
                                 <?php $i++; endwhile; ?>

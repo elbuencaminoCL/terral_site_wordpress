@@ -36,7 +36,11 @@
 							                ?>
 											<?php while ( $connected->have_posts() ) : $connected->the_post(); $product = get_product( $connected->post->ID ); ?>
 							                    <article class="row-int">
-							                        <div class="title"><h5><? the_title();?></h5></div>
+							                        <div class="title">
+										                <?php if( get_field('_tipo_habitacion') ): ?>
+												    		<h5><span><?php the_field('_tipo_habitacion'); ?></span><span class="tooltipster-icon"><img src="<?php bloginfo('stylesheet_directory'); ?>/imag/icon/icon-tooltip.jpg" class="tooltip" title="<?php the_field('_ingresar_texto_para_tooltip'); ?>" alt="Info" /></span></h5>
+												   		<?php endif; ?>
+										            </div>
 							                        <div class="currency">
 							                        	<?
 								                        	echo $product->get_price_html();
@@ -47,7 +51,11 @@
 				                                            }
 	                                                	?>
 	                                                </div>
-	                                                <div class="currency"></div>
+	                                                <div class="currency">
+	                                                	<?php if( get_field('_ingrese_precio_en_dolares') ): ?>
+				                                            <?php the_field('_ingrese_precio_en_dolares'); ?>
+				                                        <?php endif; ?>
+	                                                </div>
 	                                                <?
 		                                                echo '<div class="cont-button">';
 					                                        echo '<a href="'.get_the_permalink().'">'.$product->single_add_to_cart_text().'</a>';
